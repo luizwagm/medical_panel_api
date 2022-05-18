@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc41aab96876e2f141aad1eea52efe857
+class ComposerStaticInit070cd95054e4552eb824f3607b8513f3
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -575,6 +575,7 @@ class ComposerStaticInitc41aab96876e2f141aad1eea52efe857
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\V1\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/V1/Auth/AuthController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -6014,10 +6015,10 @@ class ComposerStaticInitc41aab96876e2f141aad1eea52efe857
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc41aab96876e2f141aad1eea52efe857::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc41aab96876e2f141aad1eea52efe857::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitc41aab96876e2f141aad1eea52efe857::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitc41aab96876e2f141aad1eea52efe857::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit070cd95054e4552eb824f3607b8513f3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit070cd95054e4552eb824f3607b8513f3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit070cd95054e4552eb824f3607b8513f3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit070cd95054e4552eb824f3607b8513f3::$classMap;
 
         }, null, ClassLoader::class);
     }
