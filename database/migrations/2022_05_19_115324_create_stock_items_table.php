@@ -17,8 +17,8 @@ class CreateStockItemsTable extends Migration
             $table->id();
             $table->foreignId('id_item')->constrained('items');
             $table->foreignId('id_inventory_stock')->constrained('inventory_stocks');
-            $table->string('quantity');
-            $table->string('unitary_value');
+            $table->string('quantity')->nullable();
+            $table->string('unitary_value')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
