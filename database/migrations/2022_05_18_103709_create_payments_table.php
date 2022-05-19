@@ -17,11 +17,11 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('id_order')->constrained('orders');
             $table->foreignId('id_form_payment')->constrained('form_payments');
-            $table->date('due_date');
-            $table->string('number_control');
-            $table->text('description');
-            $table->string('installments');
-            $table->string('amount');
+            $table->date('due_date')->nullable();
+            $table->string('number_control')->nullable();
+            $table->text('description')->nullable();
+            $table->string('installments')->nullable();
+            $table->string('amount')->nullable();
             $table->timestamps();
             $table->SoftDeletes();
         });

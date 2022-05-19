@@ -16,10 +16,10 @@ class CreateClaimChecksTable extends Migration
         Schema::create('claim_checks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_order')->constrained('orders');
-            $table->text('header');
-            $table->string('emitter');
-            $table->string('amount');
-            $table->date('date');
+            $table->text('header')->nullable();
+            $table->string('emitter')->nullable();
+            $table->string('amount')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

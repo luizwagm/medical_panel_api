@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBranchUnitsTable extends Migration
+class CreateCurrentAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBranchUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('branch_units', function (Blueprint $table) {
+        Schema::create('current_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('current_account')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +28,6 @@ class CreateBranchUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch_units');
+        Schema::dropIfExists('current_accounts');
     }
 }

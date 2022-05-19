@@ -15,17 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_code');
-            $table->foreignId('id_branch_units')->constrained('branch_units');
-            $table->string('guide_number');
-            $table->date('date');
+            $table->string('invoice_code')->nullable();
+            $table->foreignId('id_branch_unit')->constrained('branch_units');
+            $table->string('guide_number')->nullable();
+            $table->date('date')->nullable();
             $table->foreignId('id_customer')->constrained('customers');
-            $table->string('claim_check');
-            $table->string('invoice');
-            $table->string('agreement_table');
+            $table->string('claim_check')->nullable();
+            $table->string('invoice')->nullable();
+            $table->string('agreement_table')->nullable();
             $table->foreignId('id_collaborator')->constrained('collaborators');
-            $table->string('observation');
-            $table->tinyInteger('type');
+            $table->string('observation')->nullable();
+            $table->tinyInteger('type')->comment('(1) Budget - (2) Invoice');
             $table->timestamps();
             $table->softDeletes();
         });

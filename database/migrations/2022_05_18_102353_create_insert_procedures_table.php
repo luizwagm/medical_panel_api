@@ -17,9 +17,9 @@ class CreateInsertProceduresTable extends Migration
             $table->id();
             $table->foreignId('id_order')->constrained('orders');
             $table->foreignId('id_procedure')->constrained('procedures');
-            $table->string('quantity');
-            $table->string('amount');
-            $table->string('total');
+            $table->string('quantity')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
