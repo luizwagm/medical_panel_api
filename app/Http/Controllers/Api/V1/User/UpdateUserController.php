@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Collaborator;
+namespace App\Http\Controllers\Api\V1\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Collaborators\DeleteCollaboratorRequest;
+use App\Http\Requests\V1\Collaborators\UpdateCollaboratorRequest;
 use App\Services\Api\V1\Collaborator\CollaboratorServiceContract;
 
-class DeleteCollaboratorController extends Controller
+class UpdateUserController extends Controller
 {
     public function __construct(
         protected CollaboratorServiceContract $service
     ) {}
 
-    public function __invoke(DeleteCollaboratorRequest $request)
+    public function __invoke(UpdateCollaboratorRequest $request, int $id)
     {
         try {
-            $this->service->delete($request->id);
+            return json_encode(['data' => $this->service->update($request->all(), $id)]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

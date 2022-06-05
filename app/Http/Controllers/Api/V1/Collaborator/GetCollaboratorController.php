@@ -11,10 +11,10 @@ class GetCollaboratorController extends Controller
         protected CollaboratorServiceContract $service
     ) {}
 
-    public function __invoke($id)
+    public function __invoke(int $id)
     {
         try {
-            print_r($this->service->get($id));
+            return json_encode(['data' => $this->service->get($id)]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Collaborator;
+namespace App\Http\Controllers\Api\V1\Classification;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Collaborators\StoreCollaboratorRequest;
 use App\Services\Api\V1\Collaborator\CollaboratorServiceContract;
 
-class StoreCollaboratorController extends Controller
+class StoreClassificationController extends Controller
 {
     public function __construct(
         protected CollaboratorServiceContract $service

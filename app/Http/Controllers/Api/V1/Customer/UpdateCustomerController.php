@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Collaborator;
+namespace App\Http\Controllers\Api\V1\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Collaborators\UpdateCollaboratorRequest;
 use App\Services\Api\V1\Collaborator\CollaboratorServiceContract;
 
-class UpdateCollaboratorController extends Controller
+class UpdateCustomerController extends Controller
 {
     public function __construct(
         protected CollaboratorServiceContract $service

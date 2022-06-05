@@ -2,7 +2,9 @@
 
 namespace App\Services\Api\V1\Collaborator;
 
+use App\Models\Api\V1\Collaborators;
 use App\Repositories\Api\V1\Collaborator\CollaboratorRepositoryContract;
+use Illuminate\Database\Eloquent\Collection;
 
 class CollaboratorService implements CollaboratorServiceContract
 {
@@ -10,28 +12,28 @@ class CollaboratorService implements CollaboratorServiceContract
         protected CollaboratorRepositoryContract $repository
     ) {}
 
-    public function get()
+    public function get(int $id): Collaborators
     {
-        return $this->repository->getById(1);
+        return $this->repository->getById($id);
     }
 
-    public function all()
+    public function all(): Collection
     {
         return $this->repository->all();
     }
 
-    public function store()
+    public function store(array $data): Collaborators
     {
-        return $this->repository->store([]);
+        return $this->repository->store($data);
     }
 
-    public function update()
+    public function update(array $data, int $id): Collaborators
     {
-        return $this->repository->updateById([], 1);
+        return $this->repository->updateById($data, $id);
     }
 
-    public function delete()
+    public function delete(int $id): void
     {
-        return $this->repository->delete(1);
+        $this->repository->delete($id);
     }
 }
