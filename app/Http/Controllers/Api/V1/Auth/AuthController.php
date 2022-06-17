@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\V1\Auth;
+namespace App\Http\Controllers\Api\V1\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\AuthRequest;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -18,18 +19,11 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function login()
+    public function login(AuthRequest $credentials)
     {
-        $credentials = request(['email', 'password']);
-
-        // if (! $token = auth()->attempt($credentials)) {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        if (! $token = auth()->attempt($credentials->all())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
         return $this->respondWithToken($token);
     }
@@ -75,7 +69,6 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',

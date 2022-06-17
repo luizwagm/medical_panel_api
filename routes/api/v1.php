@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use Collaborator\{GetCollaboratorController, 
     AllCollaboratorController,
@@ -226,4 +227,8 @@ Route::prefix('v1')->group(function () {
         Route::put('/{id}', UpdateUserController::class);
         Route::delete('/', DeleteUserController::class);
     });
+
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/me', [AuthController::class, 'me']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
