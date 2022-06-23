@@ -18,7 +18,7 @@ class CompanyService implements CompanyServiceContract
 
     public function store(array $data): Company
     {
-        if (! $this->repository->get()) {
+        if (! $this->get()) {
             return $this->create($data);
         }
         
