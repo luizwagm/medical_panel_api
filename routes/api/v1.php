@@ -97,6 +97,10 @@ use User\{GetUserController,
     UpdateUserController,
     DeleteUserController
 };
+use Company\{GetCompanyController,
+    DeleteCompanyController,
+    StoreCompanyController
+};
 
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
@@ -225,5 +229,11 @@ Route::prefix('v1')->group(function () {
         Route::post('/', StoreUserController::class);
         Route::put('/{id}', UpdateUserController::class);
         Route::delete('/', DeleteUserController::class);
+    });
+
+    Route::prefix('company')->group(function () {
+        Route::get('/', GetCompanyController::class);
+        Route::post('/', StoreCompanyController::class);
+        Route::delete('/', DeleteCompanyController::class);
     });
 });
