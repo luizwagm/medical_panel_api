@@ -98,14 +98,8 @@ use User\{GetUserController,
     DeleteUserController
 };
 use Company\{GetCompanyController,
-    DeleteAddressController,
     DeleteCompanyController,
-    DeleteContactController,
-    StoreAddressController,
     StoreCompanyController,
-    UpdateAddressController,
-    UpdateContactController,
-    StoreContactController,
     UpdateCompanyController
 };
 
