@@ -97,6 +97,17 @@ use User\{GetUserController,
     UpdateUserController,
     DeleteUserController
 };
+use Company\{GetCompanyController,
+    DeleteAddressController,
+    DeleteCompanyController,
+    DeleteContactController,
+    StoreAddressController,
+    StoreCompanyController,
+    UpdateAddressController,
+    UpdateContactController,
+    StoreContactController,
+    UpdateCompanyController
+};
 
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
@@ -225,5 +236,18 @@ Route::prefix('v1')->group(function () {
         Route::post('/', StoreUserController::class);
         Route::put('/{id}', UpdateUserController::class);
         Route::delete('/', DeleteUserController::class);
+    });
+
+    Route::prefix('company')->group(function () {
+        Route::get('/', GetCompanyController::class);
+        Route::post('/store', StoreCompanyController::class);
+        // Route::post('/store-address', StoreAddressController::class);
+        // Route::post('/store-contact', StoreContactController::class);
+        Route::put('/update', UpdateCompanyController::class);
+        // Route::put('/update-address', UpdateAddressController::class);
+        // Route::put('/update-contact', UpdateContactController::class);
+        Route::delete('/delete', DeleteCompanyController::class);
+        // Route::delete('/delete-address', DeleteAddressController::class);
+        // Route::delete('/delete-contact', DeleteContactController::class);
     });
 });
