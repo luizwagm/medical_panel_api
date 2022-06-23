@@ -240,14 +240,8 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('company')->group(function () {
         Route::get('/', GetCompanyController::class);
-        Route::post('/store', StoreCompanyController::class);
-        // Route::post('/store-address', StoreAddressController::class);
-        // Route::post('/store-contact', StoreContactController::class);
-        Route::put('/update', UpdateCompanyController::class);
-        // Route::put('/update-address', UpdateAddressController::class);
-        // Route::put('/update-contact', UpdateContactController::class);
-        Route::delete('/delete', DeleteCompanyController::class);
-        // Route::delete('/delete-address', DeleteAddressController::class);
-        // Route::delete('/delete-contact', DeleteContactController::class);
+        Route::post('/', StoreCompanyController::class);
+        Route::put('/', UpdateCompanyController::class);
+        Route::delete('/', DeleteCompanyController::class);
     });
 });
