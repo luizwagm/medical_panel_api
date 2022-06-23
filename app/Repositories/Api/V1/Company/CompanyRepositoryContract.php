@@ -7,8 +7,8 @@ use App\Repositories\Api\V1\BaseRepositoryContract;
 
 interface CompanyRepositoryContract extends BaseRepositoryContract
 {
-    public function get(): Company;
-    public function store(array $data): Company;
+    public function get();
+    public function create(array $data): Company;
     public function update(array $data): Company;
     public function delete(): void;
 }

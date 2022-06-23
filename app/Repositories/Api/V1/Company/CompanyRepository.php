@@ -11,12 +11,12 @@ class CompanyRepository extends BaseRepository implements CompanyRepositoryContr
         protected Company $model
     ) {}
 
-    public function get(): Company
+    public function get()
     {
         return $this->model->first();
     }
 
-    public function store(array $data): Company
+    public function create(array $data): Company
     {
         return $this->model->create($data);
     }

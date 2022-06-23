@@ -11,17 +11,26 @@ class CompanyService implements CompanyServiceContract
         protected CompanyRepositoryContract $repository
     ) {}
 
-    public function get(): Company
+    public function get()
     {
         return $this->repository->get();
     }
 
     public function store(array $data): Company
     {
-        return $this->repository->store($data);
+        if (! $this->repository->get()) {
+            return $this->create($data);
+        }
+        
+        return $this->update($data);
     }
 
-    public function update(array $data): Company
+    private function create(array $data): Company
+    {
+        return $this->repository->create($data);
+    }
+
+    private function update(array $data): Company
     {
         return $this->repository->update($data);
     }

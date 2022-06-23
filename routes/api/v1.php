@@ -99,8 +99,7 @@ use User\{GetUserController,
 };
 use Company\{GetCompanyController,
     DeleteCompanyController,
-    StoreCompanyController,
-    UpdateCompanyController
+    StoreCompanyController
 };
 
 Route::prefix('v1')->group(function () {
@@ -235,7 +234,6 @@ Route::prefix('v1')->group(function () {
     Route::prefix('company')->group(function () {
         Route::get('/', GetCompanyController::class);
         Route::post('/', StoreCompanyController::class);
-        Route::put('/', UpdateCompanyController::class);
         Route::delete('/', DeleteCompanyController::class);
     });
 });

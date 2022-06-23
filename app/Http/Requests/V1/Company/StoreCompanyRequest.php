@@ -3,6 +3,7 @@
 namespace App\Http\Requests\V1\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
+use LaravelLegends\PtBrValidator\Rules\Cnpj;
 
 class StoreCompanyRequest extends FormRequest
 {
@@ -24,9 +25,9 @@ class StoreCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'corporate_name' => 'string|required',
-            'cnpj' => 'string|required',
-            'fantasy_name' => 'string|required'
+            'corporate_name' => ['string', 'required'],
+            'cnpj' => ['string', 'required', new Cnpj],
+            'fantasy_name' => ['string', 'required']
         ];
     }
 }
