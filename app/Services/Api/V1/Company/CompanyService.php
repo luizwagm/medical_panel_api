@@ -2,6 +2,7 @@
 
 namespace App\Services\Api\V1\Company;
 
+use App\Models\Api\V1\Company;
 use App\Repositories\Api\V1\Company\CompanyRepositoryContract;
 
 class CompanyService implements CompanyServiceContract
@@ -10,17 +11,17 @@ class CompanyService implements CompanyServiceContract
         protected CompanyRepositoryContract $repository
     ) {}
 
-    public function get()
+    public function get(): Company
     {
         return $this->repository->get();
     }
 
-    public function store(array $data)
+    public function store(array $data): Company
     {
         return $this->repository->store($data);
     }
 
-    public function update(array $data)
+    public function update(array $data): Company
     {
         return $this->repository->update($data);
     }
