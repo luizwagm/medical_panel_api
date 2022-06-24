@@ -16,7 +16,7 @@ class CollaboratorService implements CollaboratorServiceContract
     {
         return $this->repository->getById($id);
     }
-
+    
     public function all(): Collection
     {
         return $this->repository->all();

@@ -98,6 +98,10 @@ use User\{GetUserController,
     DeleteUserController
 };
 
+use Chat\{OpenChatController,
+
+};
+
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
         Route::get('/{id}', GetCollaboratorController::class);
@@ -225,5 +229,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/', StoreUserController::class);
         Route::put('/{id}', UpdateUserController::class);
         Route::delete('/', DeleteUserController::class);
+    });
+
+    Route::prefix('chat')->group(function () {
+        Route::post('/', OpenChatController::class);
     });
 });

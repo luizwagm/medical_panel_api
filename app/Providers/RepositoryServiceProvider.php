@@ -6,6 +6,8 @@ use App\Repositories\Api\V1\BaseRepository;
 use App\Repositories\Api\V1\BaseRepositoryContract;
 use App\Repositories\Api\V1\BranchUnity\BranchUnityRepository;
 use App\Repositories\Api\V1\BranchUnity\BranchUnityRepositoryContract;
+use App\Repositories\Api\V1\Chat\ChatRepository;
+use App\Repositories\Api\V1\Chat\ChatRepositoryContract;
 use App\Repositories\Api\V1\ClaimCheck\ClaimCheckRepository;
 use App\Repositories\Api\V1\ClaimCheck\ClaimCheckRepositoryContract;
 use App\Repositories\Api\V1\Classification\ClassificationRepository;
@@ -59,5 +61,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(ProcedureRepositoryContract::class, ProcedureRepository::class);
         $this->app->singleton(StockItemRepositoryContract::class, StockItemRepository::class);
         $this->app->singleton(UserRepositoryContract::class, UserRepository::class);
+        $this->app->singleton(ChatRepositoryContract::class, ChatRepository::class);
     }
 }
