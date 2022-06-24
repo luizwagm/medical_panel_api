@@ -12,4 +12,5 @@ interface CollaboratorRepositoryContract extends BaseRepositoryContract
     public function create(array $data): Collaborators;
     public function updateById(array $data, int $id): Collaborators;
     public function delete(int $id): void;
+    public function firstById(int $id): Collaborators;
 }

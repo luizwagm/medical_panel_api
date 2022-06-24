@@ -28,7 +28,8 @@ class CollaboratorService implements CollaboratorServiceContract
     {
         $user = $this->userService->create([
             'name' => $data['full_name'],
-            'password' => password_hash($data['password'], PASSWORD_DEFAULT)
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT),
+            'cpf' => $data['cpf']
         ]);
 
         $data['user_id'] = $user?->id;
@@ -43,6 +44,10 @@ class CollaboratorService implements CollaboratorServiceContract
 
     public function delete(int $id): void
     {
+        $collaborator = $this->repository->firstById($id);
+        
+        $this->userService->delete($collaborator?->user_id);
+
         $this->repository->delete($id);
     }
 }
