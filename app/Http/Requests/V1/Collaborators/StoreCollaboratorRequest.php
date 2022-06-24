@@ -32,7 +32,8 @@ class StoreCollaboratorRequest extends FormRequest
             'cpf' => ['required', Rule::unique('collaborators', 'cpf')->whereNull('deleted_at'), new Cpf],
             'phone' => ['required', new CelularComDdd],
             'address' => ['required'],
-            'email' => ['required', Rule::unique('collaborators', 'email')->whereNull('deleted_at')]
+            'email' => ['required', Rule::unique('collaborators', 'email')->whereNull('deleted_at')],
+            'password' => ['required', 'string'],
         ];
     }
 }

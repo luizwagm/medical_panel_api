@@ -28,7 +28,7 @@ class CollaboratorService implements CollaboratorServiceContract
     {
         $user = $this->userService->create([
             'name' => $data['full_name'],
-            'password' => password_hash('123mudar456', PASSWORD_DEFAULT)
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT)
         ]);
 
         $data['user_id'] = $user->id;
