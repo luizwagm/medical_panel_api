@@ -31,7 +31,7 @@ class CollaboratorService implements CollaboratorServiceContract
             'password' => password_hash($data['password'], PASSWORD_DEFAULT)
         ]);
 
-        $data['user_id'] = $user->id;
+        $data['user_id'] = $user?->id;
 
         return $this->repository->create($data);
     }
