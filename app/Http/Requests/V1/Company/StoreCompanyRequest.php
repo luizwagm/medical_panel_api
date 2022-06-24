@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\V1\Collaborators;
+namespace App\Http\Requests\V1\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
+use LaravelLegends\PtBrValidator\Rules\Cnpj;
 
-class DeleteCollaboratorRequest extends FormRequest
+class StoreCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,9 @@ class DeleteCollaboratorRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer', 'exists:collaborators,id'],
+            'corporate_name' => ['string', 'required'],
+            'cnpj' => ['string', 'required', new Cnpj],
+            'fantasy_name' => ['string', 'required']
         ];
     }
 }

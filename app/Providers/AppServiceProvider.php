@@ -12,6 +12,8 @@ use App\Services\Api\V1\Classification\ClassificationService;
 use App\Services\Api\V1\Classification\ClassificationServiceContract;
 use App\Services\Api\V1\Collaborator\CollaboratorService;
 use App\Services\Api\V1\Collaborator\CollaboratorServiceContract;
+use App\Services\Api\V1\Company\CompanyService;
+use App\Services\Api\V1\Company\CompanyServiceContract;
 use App\Services\Api\V1\CurrentAccount\CurrentAccountService;
 use App\Services\Api\V1\CurrentAccount\CurrentAccountServiceContract;
 use App\Services\Api\V1\Customer\CustomerService;
@@ -64,6 +66,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(StockItemServiceContract::class, StockItemService::class);
         $this->app->singleton(UserServiceContract::class, UserService::class);
         $this->app->singleton(ChatServiceContract::class, ChatService::class);
+        $this->app->singleton(CompanyServiceContract::class, CompanyService::class);
     }
 
     /**

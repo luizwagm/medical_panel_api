@@ -97,6 +97,10 @@ use User\{GetUserController,
     UpdateUserController,
     DeleteUserController
 };
+use Company\{GetCompanyController,
+    DeleteCompanyController,
+    StoreCompanyController
+};
 
 use Chat\{OpenChatController,
 
@@ -104,10 +108,10 @@ use Chat\{OpenChatController,
 
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
-        Route::get('/{id}', GetCollaboratorController::class);
         Route::get('/all', AllCollaboratorController::class);
+        Route::get('/', GetCollaboratorController::class);
         Route::post('/', StoreCollaboratorController::class);
-        Route::put('/{id}', UpdateCollaboratorController::class);
+        Route::put('/', UpdateCollaboratorController::class);
         Route::delete('/', DeleteCollaboratorController::class);
     });
     
@@ -233,5 +237,10 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('chat')->group(function () {
         Route::post('/', OpenChatController::class);
+    });
+    Route::prefix('company')->group(function () {
+        Route::get('/', GetCompanyController::class);
+        Route::post('/', StoreCompanyController::class);
+        Route::delete('/', DeleteCompanyController::class);
     });
 });

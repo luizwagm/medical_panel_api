@@ -14,6 +14,8 @@ use App\Repositories\Api\V1\Classification\ClassificationRepository;
 use App\Repositories\Api\V1\Classification\ClassificationRepositoryContract;
 use App\Repositories\Api\V1\Collaborator\CollaboratorRepository;
 use App\Repositories\Api\V1\Collaborator\CollaboratorRepositoryContract;
+use App\Repositories\Api\V1\Company\CompanyRepository;
+use App\Repositories\Api\V1\Company\CompanyRepositoryContract;
 use App\Repositories\Api\V1\CurrentAccount\CurrentAccountRepository;
 use App\Repositories\Api\V1\CurrentAccount\CurrentAccountRepositoryContract;
 use App\Repositories\Api\V1\Customer\CustomerRepository;
@@ -62,5 +64,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(StockItemRepositoryContract::class, StockItemRepository::class);
         $this->app->singleton(UserRepositoryContract::class, UserRepository::class);
         $this->app->singleton(ChatRepositoryContract::class, ChatRepository::class);
+        $this->app->singleton(CompanyRepositoryContract::class, CompanyRepository::class);
     }
 }

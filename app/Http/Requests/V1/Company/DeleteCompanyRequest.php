@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\V1\Collaborators;
+namespace App\Http\Requests\V1\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteCollaboratorRequest extends FormRequest
+class DeleteCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,6 @@ class DeleteCollaboratorRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'id' => ['required', 'integer', 'exists:collaborators,id'],
-        ];
+        return [];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models\Api\V1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -20,8 +21,8 @@ class Users extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
+        'cpf',
     ];
 
     /**
@@ -31,7 +32,6 @@ class Users extends Authenticatable implements JWTSubject
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -66,5 +66,10 @@ class Users extends Authenticatable implements JWTSubject
     public function chats(): BelongsToMany
     {
         return $this->belongsToMany(Chat::class)->withPivot('has_messages');
+    }
+    
+    public function collaborator(): BelongsTo
+    {
+        return $this->belongsTo(Collaborator::class);
     }
 }

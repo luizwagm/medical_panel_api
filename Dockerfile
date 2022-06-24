@@ -10,6 +10,7 @@ RUN apt-get update
 RUN apt update
 
 RUN apt-get -y install tzdata
+RUN apt-get -y install apache2
 
 RUN apt -y install software-properties-common
 RUN add-apt-repository ppa:ondrej/php
@@ -22,6 +23,13 @@ RUN apt-get -y install vim nano
 RUN wget -O /home/composer-setup.php https://getcomposer.org/installer
 RUN php /home/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+RUN a2enmod rewrite
+RUN a2enmod ssl
+
+COPY ../files/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN service apache2 restart
+
 RUN echo "America/Sao_Paulo" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
@@ -29,4 +37,4 @@ RUN bash
 
 CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
 
-EXPOSE 80
+EXPOSE 8080
