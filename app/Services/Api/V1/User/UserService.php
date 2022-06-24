@@ -27,6 +27,11 @@ class UserService implements UserServiceContract
         return $this->repository->store($data);
     }
 
+    public function create(array $data): Users
+    {
+        return $this->repository->store($data);
+    }
+
     public function update(array $data, int $id): Users
     {
         return $this->repository->updateById($data, $id);

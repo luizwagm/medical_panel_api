@@ -15,7 +15,13 @@ class CreateCollaboratorsTable extends Migration
     {
         Schema::create('collaborators', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('full_name')->nullable();
+            $table->date('admission_date');
+            $table->string('cpf')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

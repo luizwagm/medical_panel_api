@@ -15,7 +15,7 @@ class DeleteCollaboratorController extends Controller
     public function __invoke(DeleteCollaboratorRequest $request)
     {
         try {
-            $this->service->delete($request->id);
+            return response(json_encode(['data' => $this->service->delete($request->validated()['id'])]), 204);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

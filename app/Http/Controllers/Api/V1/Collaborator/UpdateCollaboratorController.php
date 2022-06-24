@@ -12,10 +12,12 @@ class UpdateCollaboratorController extends Controller
         protected CollaboratorServiceContract $service
     ) {}
 
-    public function __invoke(UpdateCollaboratorRequest $request, int $id)
+    public function __invoke(UpdateCollaboratorRequest $request)
     {
         try {
-            return json_encode(['data' => $this->service->update($request->all(), $id)]);
+            $validated = $request->validated();
+
+            return response(json_encode(['data' => $this->service->update($validated, $validated['id'])]));
         } catch (\Exception $e) {
             return $e->getMessage();
         }

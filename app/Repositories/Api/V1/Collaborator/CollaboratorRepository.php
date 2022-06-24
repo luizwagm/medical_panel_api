@@ -13,9 +13,7 @@ class CollaboratorRepository extends BaseRepository implements CollaboratorRepos
 
     public function getById(int $id): Collaborators
     {
-        return $this->model
-            ->where('id', $id)
-            ->first();
+        return $this->firstById($id);
     }
 
     public function all(): object
@@ -23,16 +21,18 @@ class CollaboratorRepository extends BaseRepository implements CollaboratorRepos
         return $this->model->get();
     }
 
-    public function store(array $data): Collaborators
+    public function create(array $data): Collaborators
     {
         return $this->model->create($data);
     }
 
     public function updateById(array $data, int $id): Collaborators
     {
-        return $this->model
-            ->where('id', $id)
-            ->update($data);
+        $collaborator = $this->model->where('id', $id);
+        
+        $collaborator->update($data);
+
+        return $collaborator->first();
     }
 
     public function delete(int $id): void
@@ -40,5 +40,12 @@ class CollaboratorRepository extends BaseRepository implements CollaboratorRepos
         $this->model
             ->where('id', $id)
             ->delete();
-    }    
+    }
+
+    public function firstById(int $id): Collaborators
+    {
+        return $this->model
+            ->where('id', $id)
+            ->first();
+    }
 }

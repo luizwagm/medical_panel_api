@@ -14,7 +14,7 @@ class AllCollaboratorController extends Controller
     public function __invoke()
     {
         try {
-            return json_encode(['data' => $this->service->all()]);
+            return response(json_encode(['data' => $this->service->all()]));
         } catch (\Exception $e) {
             return $e->getMessage();
         }

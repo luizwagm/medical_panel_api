@@ -3,6 +3,8 @@
 namespace App\Http\Requests\V1\Collaborators;
 
 use Illuminate\Foundation\Http\FormRequest;
+use LaravelLegends\PtBrValidator\Rules\CelularComDdd;
+use LaravelLegends\PtBrValidator\Rules\Cpf;
 
 class UpdateCollaboratorRequest extends FormRequest
 {
@@ -24,7 +26,13 @@ class UpdateCollaboratorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
+            'id' => ['required', 'integer', 'exists:collaborators,id'],
+            'full_name' => ['required'],
+            'admission_date' => ['required'],
+            'cpf' => ['required', new Cpf],
+            'phone' => ['required', new CelularComDdd],
+            'address' => ['required'],
+            'email' => ['required']
         ];
     }
 }
