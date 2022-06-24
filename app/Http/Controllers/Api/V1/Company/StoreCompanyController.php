@@ -15,7 +15,7 @@ class StoreCompanyController extends Controller
     public function __invoke(StoreCompanyRequest $request)
     {
         try {
-            return response(json_encode(['data' => $this->service->store($request->validated())]), 201);
+            return response(json_encode(['data' => $this->service->store($request->validated())]));
         } catch (\Exception $e) {
             return $e->getMessage();
         }

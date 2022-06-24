@@ -3,6 +3,9 @@
 namespace App\Http\Requests\V1\Collaborators;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use LaravelLegends\PtBrValidator\Rules\CelularComDdd;
+use LaravelLegends\PtBrValidator\Rules\Cpf;
 
 class StoreCollaboratorRequest extends FormRequest
 {
@@ -24,7 +27,12 @@ class StoreCollaboratorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'full_name' => ['required'],
+            'admission_date' => ['required'],
+            'cpf' => ['required', Rule::unique('collaborators', 'cpf')->whereNull('deleted_at'), new Cpf],
+            'phone' => ['required', new CelularComDdd],
+            'address' => ['required'],
+            'email' => ['required', Rule::unique('collaborators', 'email')->whereNull('deleted_at')]
         ];
     }
 }

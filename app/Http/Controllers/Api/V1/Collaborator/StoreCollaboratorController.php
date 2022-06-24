@@ -15,7 +15,7 @@ class StoreCollaboratorController extends Controller
     public function __invoke(StoreCollaboratorRequest $request)
     {
         try {
-            return json_encode(['data' => $this->service->store($request->all())]);
+            return response(json_encode(['data' => $this->service->store($request->validated())]), 201);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

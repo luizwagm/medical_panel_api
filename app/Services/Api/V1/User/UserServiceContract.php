@@ -10,6 +10,7 @@ interface UserServiceContract
     public function get(int $id): Users;
     public function all(): Collection;
     public function store(array $data): Users;
+    public function create(array $data): Users;
     public function update(array $data, int $id): Users;
     public function delete(int $id): void;
 }

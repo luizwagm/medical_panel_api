@@ -23,16 +23,18 @@ class CollaboratorRepository extends BaseRepository implements CollaboratorRepos
         return $this->model->get();
     }
 
-    public function store(array $data): Collaborators
+    public function create(array $data): Collaborators
     {
         return $this->model->create($data);
     }
 
     public function updateById(array $data, int $id): Collaborators
     {
-        return $this->model
-            ->where('id', $id)
-            ->update($data);
+        $collaborator = $this->model->where('id', $id);
+        
+        $collaborator->update($data);
+
+        return $collaborator->first();
     }
 
     public function delete(int $id): void

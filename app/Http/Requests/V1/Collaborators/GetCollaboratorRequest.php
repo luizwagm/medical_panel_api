@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1\Collaborators;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AllCollaboratorRequest extends FormRequest
+class GetCollaboratorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class AllCollaboratorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => ['required', 'integer', 'exists:collaborators,id'],
         ];
     }
 }

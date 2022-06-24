@@ -104,10 +104,10 @@ use Company\{GetCompanyController,
 
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
-        Route::get('/{id}', GetCollaboratorController::class);
         Route::get('/all', AllCollaboratorController::class);
+        Route::get('/', GetCollaboratorController::class);
         Route::post('/', StoreCollaboratorController::class);
-        Route::put('/{id}', UpdateCollaboratorController::class);
+        Route::put('/', UpdateCollaboratorController::class);
         Route::delete('/', DeleteCollaboratorController::class);
     });
     
