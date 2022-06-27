@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Chat\OpenChatRequest;
 use App\Services\Api\V1\Chat\ChatServiceContract;
 
-class OpenChatController extends Controller
+class GetMessageController extends Controller
 {
     public function __construct(
         protected ChatServiceContract $service
@@ -15,7 +15,7 @@ class OpenChatController extends Controller
     public function __invoke(OpenChatRequest $request)
     {
         try {
-            return json_encode(['data' => $this->service->getOrCreate($request->validated())]);
+            return json_encode(['data' => $this->service->getChatMessages($request->validated())]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

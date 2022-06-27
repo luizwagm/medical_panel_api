@@ -3,17 +3,23 @@
 namespace App\Services\Api\V1\Chat;
 
 use App\Models\Api\V1\Chat;
+use App\Models\Api\V1\Message;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\SameUserException;
+use App\Events\Api\V1\Chat\MessageSent;
+use App\Exceptions\ChatNotFoundException;
 use App\Exceptions\UserNotFoundException;
 use App\Services\Api\V1\User\UserServiceContract;
 use App\Repositories\Api\V1\Chat\ChatRepositoryContract;
+use App\Repositories\Api\V1\Message\MessageRepositoryContract;
 
 class ChatService implements ChatServiceContract
 {
     public function __construct(
         protected ChatRepositoryContract $repository,
         protected UserServiceContract $userService,
+        protected MessageRepositoryContract $messageRepository,
     ) {}
 
     public function getOrCreate(array $request): Chat
@@ -44,5 +50,34 @@ class ChatService implements ChatServiceContract
         }
 
         return [$sender, $receiver];
+    }
+
+    public function sendMessageForChat(array $request)
+    {
+        list($sender, $receiver) = $this->validateUsers($request);
+
+        $chat = $this->chatRepository->get($sender, $receiver);
+
+        if (! $chat) {
+            throw new ChatNotFoundException();
+        }
+
+        $message = $this->messageService->create($request, $sender, $receiver);
+
+        if ($message !== null) {
+            $this->messageEvents($chat, $sender, $receiver, $message);
+        }
+
+        return $message;
+    }
+
+    private function messageEvents(Chat $chat, User $sender, User $receiver, Message $message): void
+    {
+        event(new MessageSent($sender, $message, $chat));
+    }
+
+    public function getChatMessages(array $request)
+    {
+        return $this->messageRepository->getChatMessages($request);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use Collaborator\{GetCollaboratorController, 
     AllCollaboratorController,
     StoreCollaboratorController,
@@ -103,8 +104,12 @@ use Company\{GetCompanyController,
 };
 
 use Chat\{OpenChatController,
-
+    SendMessageController,
+    GetMessageController,
+    ReadMessageController
 };
+
+use App\Http\Controllers\Api\V1\Auth\AuthController;
 
 Route::prefix('v1')->group(function () {
     Route::prefix('collaborator')->group(function () {
@@ -237,10 +242,17 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('chat')->group(function () {
         Route::post('/', OpenChatController::class);
+        Route::prefix('messages')->group(function () {
+            Route::post('/', SendMessageController::class);
+            Route::get('/', GetMessageController::class);
+        });
     });
+
     Route::prefix('company')->group(function () {
         Route::get('/', GetCompanyController::class);
         Route::post('/', StoreCompanyController::class);
         Route::delete('/', DeleteCompanyController::class);
     });
+
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
 });

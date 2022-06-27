@@ -14,6 +14,7 @@ class StoreUserController extends Controller
 
     public function __invoke(StoreCollaboratorRequest $request)
     {
+        dd("chegou aqui");
         try {
             return json_encode(['data' => $this->service->store($request->all())]);
         } catch (\Exception $e) {

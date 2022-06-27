@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1\Chat;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OpenChatRequest extends FormRequest
+class SendMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

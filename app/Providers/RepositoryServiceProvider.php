@@ -30,6 +30,8 @@ use App\Repositories\Api\V1\InventoryStock\InventoryStockRepository;
 use App\Repositories\Api\V1\InventoryStock\InventoryStockRepositoryContract;
 use App\Repositories\Api\V1\Item\ItemRepository;
 use App\Repositories\Api\V1\Item\ItemRepositoryContract;
+use App\Repositories\Api\V1\Message\MessageRepository;
+use App\Repositories\Api\V1\Message\MessageRepositoryContract;
 use App\Repositories\Api\V1\Order\OrderRepository;
 use App\Repositories\Api\V1\Order\OrderRepositoryContract;
 use App\Repositories\Api\V1\Payment\PaymentRepository;
@@ -65,5 +67,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(UserRepositoryContract::class, UserRepository::class);
         $this->app->singleton(ChatRepositoryContract::class, ChatRepository::class);
         $this->app->singleton(CompanyRepositoryContract::class, CompanyRepository::class);
+        $this->app->singleton(MessageRepositoryContract::class, MessageRepository::class);
     }
 }

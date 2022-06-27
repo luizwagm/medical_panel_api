@@ -28,6 +28,8 @@ use App\Services\Api\V1\InventoryStock\InventoryStockService;
 use App\Services\Api\V1\InventoryStock\InventoryStockServiceContract;
 use App\Services\Api\V1\Item\ItemService;
 use App\Services\Api\V1\Item\ItemServiceContract;
+use App\Services\Api\V1\Message\MessageService;
+use App\Services\Api\V1\Message\MessageServiceContract;
 use App\Services\Api\V1\Order\OrderService;
 use App\Services\Api\V1\Order\OrderServiceContract;
 use App\Services\Api\V1\Payment\PaymentService;
@@ -67,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(UserServiceContract::class, UserService::class);
         $this->app->singleton(ChatServiceContract::class, ChatService::class);
         $this->app->singleton(CompanyServiceContract::class, CompanyService::class);
+        $this->app->singleton(MessageServiceContract::class, MessageService::class);
     }
 
     /**
