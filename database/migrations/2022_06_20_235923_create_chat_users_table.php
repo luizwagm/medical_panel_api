@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatUserTable extends Migration
+class CreateChatUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateChatUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('chat_user', function (Blueprint $table) {
+        Schema::create('chat_users', function (Blueprint $table) {
             $table->foreignId('chat_id')->constrained('chats');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('users_id')->constrained('users');
             $table->boolean('has_messages')->default(0);
         });
     }

@@ -24,7 +24,7 @@ class GetMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'chat_id' => "required",
         ];
     }
 }

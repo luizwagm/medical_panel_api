@@ -12,7 +12,7 @@ class ChatRepository extends BaseRepository implements ChatRepositoryContract
         protected Chat $model,
     ) {}
 
-    public function get(User $sender, User $receiver): Chat
+    public function get(User $sender, User $receiver): ?Chat
     {
         $chatId = $this->getId($sender, $receiver);
         return $this->model->find($chatId);

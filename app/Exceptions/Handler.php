@@ -41,17 +41,4 @@ class Handler extends ExceptionHandler
         return $exception;
 
     }
-
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-    }
-
 }

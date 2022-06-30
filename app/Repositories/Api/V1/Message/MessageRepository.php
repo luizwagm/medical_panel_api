@@ -17,7 +17,7 @@ class MessageRepository implements MessageRepositoryContract
 
     public function getChatMessages($request)
     {
-        return $this->model->where($request['chat_id'])
+        return $this->model->where('chat_id',$request['chat_id'])
             ->orderByDesc('id')
             ->get();            
     }

@@ -5,20 +5,21 @@ namespace App\Services\Api\V1\Chat;
 use App\Models\Api\V1\Chat;
 use App\Models\Api\V1\Message;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Auth;
 use App\Exceptions\SameUserException;
 use App\Events\Api\V1\Chat\MessageSent;
 use App\Exceptions\ChatNotFoundException;
 use App\Exceptions\UserNotFoundException;
 use App\Services\Api\V1\User\UserServiceContract;
+use App\Services\Api\V1\Message\MessageServiceContract;
 use App\Repositories\Api\V1\Chat\ChatRepositoryContract;
 use App\Repositories\Api\V1\Message\MessageRepositoryContract;
 
 class ChatService implements ChatServiceContract
 {
     public function __construct(
-        protected ChatRepositoryContract $repository,
+        protected ChatRepositoryContract $chatRepository,
         protected UserServiceContract $userService,
+        protected MessageServiceContract $messageService,
         protected MessageRepositoryContract $messageRepository,
     ) {}
 
@@ -26,10 +27,10 @@ class ChatService implements ChatServiceContract
     {
         list($sender, $receiver) = $this->validateUsers($request);
 
-        $chat = $this->repository->get($sender, $receiver);
+        $chat = $this->chatRepository->get($sender, $receiver);
 
         if (empty($chat)) {
-            return $this->repository->create($sender, $receiver, $request);
+            return $this->chatRepository->create($sender, $receiver, $request);
          }
 
         return $chat;
