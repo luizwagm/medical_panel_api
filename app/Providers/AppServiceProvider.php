@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Api\V1\Auth\AuthService;
+use App\Services\Api\V1\Auth\AuthServiceContract;
 use App\Services\Api\V1\BranchUnity\BranchUnityService;
 use App\Services\Api\V1\BranchUnity\BranchUnityServiceContract;
 use App\Services\Api\V1\Chat\ChatService;
@@ -70,6 +72,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ChatServiceContract::class, ChatService::class);
         $this->app->singleton(CompanyServiceContract::class, CompanyService::class);
         $this->app->singleton(MessageServiceContract::class, MessageService::class);
+        $this->app->singleton(AuthServiceContract::class, AuthService::class);
     }
 
     /**
