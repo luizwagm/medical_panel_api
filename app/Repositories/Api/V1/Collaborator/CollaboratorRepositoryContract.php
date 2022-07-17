@@ -8,6 +8,7 @@ use App\Repositories\Api\V1\BaseRepositoryContract;
 interface CollaboratorRepositoryContract extends BaseRepositoryContract
 {
     public function getById(int $id): Collaborators;
+    public function getByEmail(string $email): Collaborators;
     public function all(): object;
     public function create(array $data): Collaborators;
     public function updateById(array $data, int $id): Collaborators;

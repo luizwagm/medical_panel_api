@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests\V1\Collaborators;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use LaravelLegends\PtBrValidator\Rules\CelularComDdd;
+use Illuminate\Foundation\Http\FormRequest;
 use LaravelLegends\PtBrValidator\Rules\Cpf;
+use LaravelLegends\PtBrValidator\Rules\CelularComDdd;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreCollaboratorRequest extends FormRequest
 {

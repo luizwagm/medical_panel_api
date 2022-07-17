@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Services\Api\V1\Auth\AuthService;
+use App\Services\Api\V1\Auth\AuthServiceContract;
 use App\Services\Api\V1\BranchUnity\BranchUnityService;
 use App\Services\Api\V1\BranchUnity\BranchUnityServiceContract;
+use App\Services\Api\V1\Chat\ChatService;
+use App\Services\Api\V1\Chat\ChatServiceContract;
 use App\Services\Api\V1\ClaimCheck\ClaimCheckService;
 use App\Services\Api\V1\ClaimCheck\ClaimCheckServiceContract;
 use App\Services\Api\V1\Classification\ClassificationService;
@@ -26,6 +30,8 @@ use App\Services\Api\V1\InventoryStock\InventoryStockService;
 use App\Services\Api\V1\InventoryStock\InventoryStockServiceContract;
 use App\Services\Api\V1\Item\ItemService;
 use App\Services\Api\V1\Item\ItemServiceContract;
+use App\Services\Api\V1\Message\MessageService;
+use App\Services\Api\V1\Message\MessageServiceContract;
 use App\Services\Api\V1\Order\OrderService;
 use App\Services\Api\V1\Order\OrderServiceContract;
 use App\Services\Api\V1\Payment\PaymentService;
@@ -63,7 +69,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ProcedureServiceContract::class, ProcedureService::class);
         $this->app->singleton(StockItemServiceContract::class, StockItemService::class);
         $this->app->singleton(UserServiceContract::class, UserService::class);
+        $this->app->singleton(ChatServiceContract::class, ChatService::class);
         $this->app->singleton(CompanyServiceContract::class, CompanyService::class);
+        $this->app->singleton(MessageServiceContract::class, MessageService::class);
+        $this->app->singleton(AuthServiceContract::class, AuthService::class);
     }
 
     /**

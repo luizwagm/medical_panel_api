@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\V1\Auth;
+namespace App\Http\Controllers\Api\V1\Auth;
 
-use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\V1\Auth\AuthRequest;
+use App\Services\Api\V1\Auth\AuthServiceContract;
 
 class AuthController extends Controller
 {
@@ -13,23 +14,20 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login']]);
-    }
+    public function __construct(
+        protected AuthServiceContract $authService
+    )
+    { }
 
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(AuthRequest $credentials)
     {
-        $credentials = request(['email', 'password']);
-
-        // if (! $token = auth()->attempt($credentials)) {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        $user = $this->authService->login($credentials->email, $credentials->password);
+        $token = JWTAuth::fromUser($user);
 
         return $this->respondWithToken($token);
     }
@@ -79,7 +77,6 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
 }

@@ -16,6 +16,11 @@ class CollaboratorRepository extends BaseRepository implements CollaboratorRepos
         return $this->firstById($id);
     }
 
+    public function getByEmail(string $email): Collaborators
+    {
+        return $this->model->where('email', $email)->first();
+    }
+
     public function all(): object
     {
         return $this->model->get();
